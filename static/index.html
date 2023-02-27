@@ -25,12 +25,15 @@
   <p style="font-size: 18px; color: #b802ab; margin-top: 10px">
    # Remember to bind your local service to 0.0.0.0
   </p>
-  <div style="background-color: #0f0f0f; border-radius: 10px;">
+  <div style="background-color: #0f0f0f; border-radius: 10px; text-align: left">
     <div style="padding: 10px; display: block;">
       $ curl https://tunnel.pyjam.as/8080 > tunnel.conf && wg-quick up
       ./tunnel.conf
       <br>
-      <div style="color: #fcc7fb; margin-left: 270px; margin-top: 5px;">^ port of the service you want to tunnel</div>
+      <div style="color: #fcc7fb; margin-left: 328px; margin-top: 5px;">^ port of the service you want to tunnel</div>
+
+      <br>
+      <div style="color: #999999">&gt; You can now access http://0.0.0.0:8080 on https://&lt;unique_slug&gt;.tunnel.pyjam.as/ ✨</div>
     </div>
   </div>
   <br />
@@ -59,3 +62,12 @@
     display: inline-block;
   }
 </style>
+<script>
+const checkTunnelConnection = () => {
+  console.log("running stuff")
+  fetch("http://10.101.0.1:1234").then(r => console.log(r)).catch(e => console.log(e))
+  setTimeout(checkTunnelConnection, 5000)
+}
+
+checkTunnelConnection()
+</script>
