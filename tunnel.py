@@ -197,7 +197,7 @@ class WireguardServerInterface:
 def init_reverse_proxy(caddy_hostname: str) -> None:
     """Initialise Caddy."""
     payload = {
-        "apps": {"http": {"servers": {"srv0": {"listen": [":80"], "routes": []}}}}
+        "apps": {"layer4": {"servers": {"srv0": {"listen": [":80"], "routes": []}}}}
     }
     r = requests.post(
         f"http://{caddy_hostname}:2019/load",
